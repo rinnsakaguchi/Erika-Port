@@ -16,15 +16,44 @@
         }
 
         .aurora-bg {
-            background: linear-gradient(
-                45deg, 
-                #7f5af0, 
-                #2cb67d, 
-                #7f5af0, 
-                #2cb67d
+            background-color: #111827;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .aurora-bg::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 30%, 
+                rgba(29, 78, 216, 0.15) 0%, 
+                transparent 70%
             );
-            background-size: 400% 400%;
-            animation: aurora 15s ease infinite;
+            opacity: 0.3;
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        .aurora-bg::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 80% 70%, 
+                rgba(124, 58, 237, 0.15) 0%, 
+                transparent 70%
+            );
+            opacity: 0.3;
+            animation: pulse 12s ease-in-out infinite reverse;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 0.3;
+            }
+            50% {
+                opacity: 0.5;
+            }
         }
 
         .card-hover {
@@ -49,6 +78,24 @@
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         }
 
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 4s ease infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: 0.2;
+                transform: scale(0.8);
+            }
+            50% {
+                opacity: 0.8;
+                transform: scale(1.2);
+            }
+        }
+
         .feature-card {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
@@ -56,7 +103,7 @@
         }
     </style>
 </head>
-<body class="aurora-bg min-h-screen text-white font-sans">
+<body class="aurora-bg min-h-screen text-gray-100 font-sans">
     <header class="container mx-auto px-4 py-8">
         <nav class="flex justify-between items-center">
             <div class="text-2xl font-bold">Erika Ports</div>
@@ -77,21 +124,21 @@
         <!-- Hero Section -->
         <section class="flex flex-col md:flex-row items-center justify-between py-12">
             <div class="md:w-1/2 mb-8 md:mb-0">
-                <h1 class="text-4xl md:text-6xl font-bold mb-4 leading-tight">Ports OEM Stsble</h1>
+                <h1 class="text-4xl md:text-6xl font-bold mb-4 leading-tight">Kustom ROM Android Terbaik</h1>
                 <p class="text-xl mb-8">Pengalaman Android yang lebih cepat, lebih halus, dan lebih banyak fitur.</p>
                 <a href="#download" class="btn-download inline-block px-8 py-3 rounded-full font-bold">Download Sekarang</a>
             </div>
             <div class="md:w-1/2">
-                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/d1046f4e-5a24-4dbb-90d2-5e358455c1f8.png" alt="Erika Ports showcase custom OS" class="w-full rounded-xl shadow-xl" />
+                <img src="/src/hero-image.jpg" alt="Erika Ports showcase custom OS" class="w-full rounded-xl shadow-xl" />
             </div>
         </section>
 
         <!-- About Section -->
         <section id="about" class="py-16">
             <div class="max-w-4xl mx-auto text-center">
-                <h2 class="text-3xl font-bold mb-6">Tentang Kami</h2>
+                <h2 class="text-3xl font-bold mb-6">Tentang ROM Kami</h2>
                 <p class="text-lg mb-8">
-                    Erika Ports adalah komunitas ports OEM yang dikembangkan oleh beberapa developer untuk memberikan pengalaman terbaik bagi pengguna. Dibangun dengan fokus pada performa tinggi, stabilitas, dan fitur-fitur yang stabil.
+                    CustomROM adalah sistem operasi berbasis Android yang dikembangkan oleh komunitas untuk memberikan pengalaman terbaik bagi pengguna. Dibangun dengan fokus pada performa tinggi, stabilitas, dan fitur-fitur kustomisasi yang lengkap.
                 </p>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
                     <div class="feature-card p-6 rounded-xl card-hover">
@@ -101,8 +148,8 @@
                     </div>
                     <div class="feature-card p-6 rounded-xl card-hover">
                         <div class="text-4xl mb-4">🛠️</div>
-                        <h3 class="text-xl font-bold mb-2">Ports Yang Stabil</h3>
-                        <p>Kami semaksinal mungkin untuk mengurangi bug di port kami.</p>
+                        <h3 class="text-xl font-bold mb-2">Kustomisasi Lengkap</h3>
+                        <p>Ratusan opsi personalisasi untuk membuat perangkat Anda unik.</p>
                     </div>
                     <div class="feature-card p-6 rounded-xl card-hover">
                         <div class="text-4xl mb-4">🔋</div>
@@ -177,30 +224,31 @@
         <!-- Download Section -->
         <section id="download" class="py-16">
             <div class="max-w-4xl mx-auto text-center">
-                <h2 class="text-3xl font-bold mb-6">Download Oxygen | ColorOS</h2>
+                <h2 class="text-3xl font-bold mb-6">Download CustomROM</h2>
                 <p class="text-lg mb-12">
-                    Pilih versi yang sesuai dengan minat anda. Pastikan untuk membaca panduan instalasi dengan teliti sebelum memulai.
+                    Pilih versi yang sesuai dengan perangkat Anda. Pastikan untuk membaca panduan instalasi dengan teliti sebelum memulai.
                 </p>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div class="bg-white bg-opacity-10 rounded-xl p-8 card-hover">
                         <h3 class="text-2xl font-bold mb-4">Stable Release</h3>
-                        <p class="mb-6">Versi stabil yang telah diuji secara menyeluruh. Tapi mempunyai masalah di beberapa bank.</p>
-                        <button class="btn-download px-6 py-3 rounded-full font-bold w-full">Download v15.0 Permissive</button>
+                        <p class="mb-6">Versi stabil yang telah diuji secara menyeluruh. Direkomendasikan untuk penggunaan sehari-hari.</p>
+                        <button class="btn-download px-6 py-3 rounded-full font-bold w-full">Download v5.2</button>
                     </div>
                     <div class="bg-white bg-opacity-10 rounded-xl p-8 card-hover">
                         <h3 class="text-2xl font-bold mb-4">Beta Release</h3>
-                        <p class="mb-6">Versi enforcing bagus untuk penggunaan bank tapi ada fitur yang di off di versi ini.</p>
-                        <button class="btn-download px-6 py-3 rounded-full font-bold w-full">Download v15.0 Enforcing</button>
+                        <p class="mb-6">Versi uji coba untuk pengguna yang ingin mencoba fitur terbaru sebelum rilis resmi.</p>
+                        <button class="btn-download px-6 py-3 rounded-full font-bold w-full">Download v5.3 Beta</button>
                     </div>
                 </div>
                 <div class="mt-12 bg-white bg-opacity-10 rounded-xl p-6">
                     <h3 class="text-xl font-bold mb-4">Panduan Instalasi</h3>
                     <ol class="text-left list-decimal pl-5 space-y-2">
-                        <li>Use TWRP 3.7.0</li>
-                        <li>Reboot Recovery</li>
-                        <li>Wipe 3</li>
-                        <li>Flash Rom</li>
-                        <li>Format</li>
+                        <li>Backup semua data penting Anda</li>
+                        <li>Unlock bootloader perangkat Anda</li>
+                        <li>Install custom recovery (TWRP recommended)</li>
+                        <li>Download file ROM yang sesuai</li>
+                        <li>Flash melalui custom recovery</li>
+                        <li>Clear cache/dalvik</li>
                         <li>Reboot sistem</li>
                     </ol>
                 </div>
@@ -217,7 +265,6 @@
                             <li>@Dadobye</li>
                             <li>@krul_tempest</li>
                             <li>@Boydeath007</li>
-                            <li>@craftersproject</li>
                             <li>@craftersproject</li>
                             <li>@OnFire_Nasir</li>
                             <li>@partisi</li>
@@ -266,12 +313,39 @@
                 </div>
             </div>
             <div class="border-t border-white border-opacity-20 mt-8 pt-8 text-center">
-                <p>© 2025 Erika-Ports. All rights reserved.</p>
+                <p>© 2023 Erika Ports. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
+        // Create twinkling stars
+        function createStars() {
+            const body = document.body;
+            const count = 20;
+            
+            for (let i = 0; i < count; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                
+                // Randomize properties
+                const size = Math.random() * 2 + 1;
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                const delay = Math.random() * 5;
+                
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.left = `${posX}%`;
+                star.style.top = `${posY}%`;
+                star.style.animationDelay = `${delay}s`;
+                
+                body.appendChild(star);
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', createStars);
+
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -298,4 +372,3 @@
     </script>
 </body>
 </html>
-
